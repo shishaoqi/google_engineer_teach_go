@@ -1,6 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
+
+var globalVar = 3
+var globalStr = "hello"
+// bb := true // 此种是不行
+
+var (
+	a = 1
+	b = "a"
+	c = true
+)
 
 func variableZeroValue() {
 	var a int
@@ -8,26 +21,30 @@ func variableZeroValue() {
 	fmt.Printf("%d %q\n", a, s)
 }
 
-func varibleInitiaValue() {
+func variableInitiaValue() {
 	var a, b int = 3, 4
 	var s string = "abc"
 	fmt.Println(a, b, s)
 }
 
-func varibleTypeDeduction() {
+func variableTypeDeduction() {
 	var a, b, c, s = 3, 4, true, "def"
 	fmt.Println(a, b, c, s)
 }
 
 func varibleShorter() {
 	a, b, c, s := 3, 4, true, "def"
-	fmt.Println(a, b, c, s)
+	fmt.Println(a, b, c, s, globalStr)
 }
 
 func main() {
 	fmt.Println("Hello world")
 	variableZeroValue()
-	varibleInitiaValue()
+	variableInitiaValue()
+	variableTypeDeduction()
 	varibleShorter()
-	varibleTypeDeduction()
+
+	str := fmt.Sprintf("%d - %s - %v", a, b, c)
+	fmt.Println(str)
+	fmt.Println("type:", reflect.TypeOf(str)) // data type check
 }

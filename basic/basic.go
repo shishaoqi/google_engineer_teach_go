@@ -10,8 +10,9 @@ func varibleZeroValue() {
 
 func variableInitialValue() {
 	var a, b int = 3, 4
+	temp := "a string"
 	var s string = "abc"
-	fmt.Println(a, b, s)
+	fmt.Println(a, b, temp, s)
 }
 
 func main() {
