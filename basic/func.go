@@ -48,6 +48,7 @@ func sum(numbers ...int) int {
 	return s
 }
 
+// 无效调换
 func swap(a, b int) {
 	a, b = b, a
 }
@@ -62,7 +63,11 @@ func newSwap(a, b int) (int, int){
 }
 
 func main() {
-	fmt.Println(eval(3, 4, "*"))
+	if result, err := eval(3, 4, "&"); err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println(result)
+	}
 
 	fmt.Println(apply(pow, 3, 4))
 

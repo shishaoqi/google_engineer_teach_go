@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// 常量
 func consts() {
 	const filename = "abc.txt"
 	const a, b = 3, 4
@@ -10,6 +11,7 @@ func consts() {
 func enums() {
 	const(
 		cpp 	= iota
+		_
 		_
 		python
 		golang

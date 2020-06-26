@@ -1,12 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"math/cmplx"
 	"math"
 )
 
 func euler() {
-	cmplx.Pow((math.E, li * math.Pi) + 1)
+	rt := cmplx.Pow(math.E, 1i * math.Pi) + 1
+	fmt.Printf("%3f",rt)
 }
 
 func main() {

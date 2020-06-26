@@ -7,8 +7,9 @@ import (
 
 var globalVar = 3
 var globalStr = "hello"
-// bb := true // 此种是不行
+// bb := true // 在函数外时，此种是不行
 
+// 使用var()集中定义变量
 var (
 	a = 1
 	b = "a"

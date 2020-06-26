@@ -16,6 +16,7 @@ func convertToBin(n int) string {
 	return result
 }
 
+// read file at line
 func printFile(filename string) {
 	file, err := os.Open(filename)
 	if err != nil {
@@ -29,11 +30,11 @@ func printFile(filename string) {
 }
 
 func main() {
-	fmt.Println(convertToBin(5))
+	fmt.Println(convertToBin(5)) // 101
 
-	fmt.Println(convertToBin(8))
+	fmt.Println(convertToBin(8)) // 1101
 
 	fmt.Println(convertToBin(28))
 
-	printFile("abc.txt")
+	printFile("basic/abc.txt")
 }
