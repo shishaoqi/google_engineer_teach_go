@@ -1,8 +1,8 @@
 package main
 
 import (
-	"algorithms/queue"
 	"fmt"
+	"github.com/shishaoqi/myGoPath/src/algorithms/queue"
 )
 
 func main() {

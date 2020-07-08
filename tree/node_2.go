@@ -1,8 +1,8 @@
 package main
 
 import (
-	"algorithms/tree"
 	"fmt"
+	"github.com/shishaoqi/myGoPath/src/algorithms/tree"
 )
 
 type MyTreeNode struct {

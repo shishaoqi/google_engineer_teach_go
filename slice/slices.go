@@ -46,6 +46,7 @@ func main() {
 	s3 := append(s2, 10)
 	s4 := append(s3, 11)
 	s5 := append(s4, 12)
+	// s4 and s5 no longer view arr
 	fmt.Println("s3, s4, s5 = ", s3, s4, s5)
 	fmt.Println("arr = ", arr)
 }

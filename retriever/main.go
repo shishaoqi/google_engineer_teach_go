@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"googlelearngo/real"
-	"googlelearngo/mock"
+	"github.com/shishaoqi/myGoPath/src/googlelearngo/mock"
+	"github.com/shishaoqi/myGoPath/src/googlelearngo/real"
 	"time"
 )
 
