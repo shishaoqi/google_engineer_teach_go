@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/shishao/hello/retriever/real"
+	"time"
 )
 
 type Retriever interface {
@@ -15,6 +16,11 @@ func download(r Retriever) string {
 
 func main() {
 	var r Retriever
-	r = real.Retriever{}
-	fmt.Println(download(r))
+	r = real.Retriever{
+		UserAgent: "Mozilla/5.0",
+		TimeOut: time.Minute,
+	}
+	fmt.Printf("%T ---- %v\n", r, r)
+
+	//fmt.Println(download(r))
 }

@@ -16,6 +16,6 @@ func download(r Retriever) string {
 func main() {
 	var r Retriever
 	r = mock.Retriever{"this is a fake imooc.com"}
-	r = real
+	fmt.Printf("%T ---- %v\n", r, r) // 接口的肚子里有两个东西：类型 与 值
 	fmt.Println(download(r))
 }
