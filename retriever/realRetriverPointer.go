@@ -29,7 +29,7 @@ func main() {
 
 	// 类型可以通过 switch 来判断，也可以通过 type assertion 来判断
 	// Type assertion 如果是 mock.Retriever
-	if mockRetriever, ok := r.(mock.Retriever); ok {
+	if mockRetriever, ok := r.(*mock.Retriever); ok {
 		fmt.Println(mockRetriever.Contents)
 	} else {
 		fmt.Println("not a mock retriever")
@@ -44,7 +44,7 @@ func inspect(r Retriever) {
 	fmt.Printf("%T ---- %v\n", r, r)
 
 	switch v := r.(type) {
-	case mock.Retriever:
+	case *mock.Retriever:
 		fmt.Println("Contents:", v.Contents)
 
 	case *real.Retriever:
