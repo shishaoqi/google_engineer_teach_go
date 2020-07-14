@@ -1,7 +1,7 @@
 package main
 
 import "fmt"
-import "algorithms/tree"
+import "github.com/shishaoqi/myGoPath/src/algorithms/tree"
 
 func main() {
 	var root tree.Node

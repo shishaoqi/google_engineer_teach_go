@@ -33,4 +33,8 @@ func main() {
 		nodeCount++
 	})
 	fmt.Println("Node count:", nodeCount)
+
+	root.TraverseFunc(func(abbc *tree.Node){
+		fmt.Printf("%d ", abbc.Value)
+	})
 }
