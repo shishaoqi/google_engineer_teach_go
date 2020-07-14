@@ -2,21 +2,21 @@ package main
 
 import (
 	"fmt"
-	"github.com/shishao/hello/retriever/mock"
-	"github.com/shishao/hello/retriever/real_pointer"
+	"github.com/shishao/hello/interface/mock"
+	"github.com/shishao/hello/interface/real_pointer"
 	"time"
 )
 
-type Retriever interface {
+type Retriever_3 interface {
 	Get(url string) string
 }
 
-func download(r Retriever) string {
+func download_3(r Retriever_3) string {
 	return r.Get("http://www.imooc.com")
 }
 
 func main() {
-	var r Retriever
+	var r Retriever_3
 	r = &real.Retriever{
 		UserAgent: "Mozilla/5.0",
 		TimeOut: time.Minute,
@@ -32,7 +32,7 @@ func main() {
 	if mockRetriever, ok := r.(*mock.Retriever); ok {
 		fmt.Println(mockRetriever.Contents)
 	} else {
-		fmt.Println("not a mock retriever")
+		fmt.Println("not a mock interface")
 	}
 
 	//fmt.Println(download(r))
@@ -40,7 +40,7 @@ func main() {
 
 // 接口的肚子里有两个东西：类型 与 值
 // 类型可以通过 switch 来判断
-func inspect(r Retriever) {
+func inspect(r Retriever_3) {
 	fmt.Printf("%T ---- %v\n", r, r)
 
 	switch v := r.(type) {

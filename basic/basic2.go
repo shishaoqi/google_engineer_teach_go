@@ -45,7 +45,8 @@ func main() {
 	variableTypeDeduction()
 	varibleShorter()
 
-	str := fmt.Sprintf("%d - %s - %v", a, b, c)
+	// %T '相应值的类型'的Go语言表示
+	str := fmt.Sprintf("%d - %s - %v - %T", a, b, c, globalVar)
 	fmt.Println(str)
 	fmt.Println("type:", reflect.TypeOf(str)) // data type check
 }

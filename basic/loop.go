@@ -7,6 +7,10 @@ import (
 	"bufio"
 )
 
+// for init; condition; post { }
+// nit： 一般为赋值表达式，给控制变量赋初值；
+// condition： 关系表达式或逻辑表达式，循环控制条件；
+// post： 一般为赋值表达式，给控制变量增量或减量。
 func convertToBin(n int) string {
 	result := ""
 	for ; n > 0; n /= 2 {

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func varibleZeroValue() {
+func variableZeroValue() {
 	var a int //变量名在前，变量类型在后
 	var s string
 	fmt.Printf("%d  %q\n", a, s)
@@ -17,6 +17,6 @@ func variableInitialValue() {
 
 func main() {
 	fmt.Println("Hello, world")
-	varibleZeroValue()
+	variableZeroValue()
 	variableInitialValue()
 }

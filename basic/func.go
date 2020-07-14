@@ -7,6 +7,8 @@ import (
 	"math"
 )
 
+// eval 评价
+// abbr. 评估，评价 (evaluation)
 func eval(a, b int, op string) (int, error) {
 	switch op {
 	case "+":
@@ -28,6 +30,7 @@ func div(a, b int) (q, r int) {
 	return a / b, a % b
 }
 
+// reflect 函数反射
 func apply(op func(int, int) int, a, b int) int{
 	//获取函数名
 	p := reflect.ValueOf(op).Pointer()

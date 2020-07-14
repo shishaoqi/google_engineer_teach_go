@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/shishao/hello/retriever/mock"
-	"github.com/shishao/hello/retriever/post"
+	"github.com/shishao/hello/interface/mock"
+	"github.com/shishao/hello/interface/post"
 )
 
 type Retriever interface {
@@ -42,6 +42,7 @@ func session(s RetrieverPoster) string {
 
 	return s.Get(url)
 }
+
 
 func main() {
 	var r Retriever
