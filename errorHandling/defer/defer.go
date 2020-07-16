@@ -6,6 +6,7 @@ func tryDefer() {
 	defer fmt.Println(1)
 	defer fmt.Println(2)
 	fmt.Println(3)
+	//return
 	panic("error occurred")
 	fmt.Println(4)
 }
