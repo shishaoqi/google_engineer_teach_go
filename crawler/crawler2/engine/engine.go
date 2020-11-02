@@ -1,7 +1,7 @@
 package engine
 
 import (
-	"../fetcher"
+	"github.com/shishao/hello/crawler/crawler2/fetcher"
 	"log"
 )
 

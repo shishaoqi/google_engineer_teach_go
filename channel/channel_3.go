@@ -1,8 +1,8 @@
 package main
 
 import (
-		"time"
 	"fmt"
+	"time"
 )
 
 func createWorker(chanId int) chan<- int { // 接收到此chan的人，只能向这chan里发数据
@@ -18,7 +18,7 @@ func createWorker(chanId int) chan<- int { // 接收到此chan的人，只能向
 	return c
 }
 
-func chanDemo3() {
+func chanDemo3(stop chan bool) {
 	var channels [10]chan<- int
 	for i := 0; i < 10; i++ {
 		channels[i] = createWorker(i) // createWorker
@@ -38,9 +38,21 @@ func chanDemo3() {
 		channels[i] <- 'A' + i
 	}
 
-	time.Sleep(time.Millisecond)
+	go func() {
+		fmt.Println("aaaaaaaaa")
+		for {
+			if <-stop {
+				break
+			}
+			fmt.Println("111111111")
+		}
+		fmt.Println("bbbbbbbbb")
+	}()
 }
 
 func main() {
-	chanDemo3()
+	stop := make(chan bool)
+	chanDemo3(stop)
+	stop <- true
+	time.Sleep(time.Millisecond)
 }
