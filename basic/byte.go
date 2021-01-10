@@ -4,8 +4,8 @@ import "fmt"
 
 func main()  {
 	var ch byte = 'A'
-	var xch byte = '\x41'
-	var uch byte = '\u0041'
+	var xch byte = '\x42'
+	var uch byte = '\u0043'
 
 	fmt.Println(ch)
 	fmt.Printf("%c\n", ch)

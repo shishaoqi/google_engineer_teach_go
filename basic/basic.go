@@ -9,7 +9,7 @@ func variableZeroValue() {
 }
 
 func variableInitialValue() {
-	var a, b int = 3, 4
+	var a, b int = 3, 4 // 声明初始化多个变量
 	temp := "a string"
 	var s string = "abc"
 	fmt.Println(a, b, temp, s)

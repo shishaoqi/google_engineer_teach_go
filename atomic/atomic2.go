@@ -34,10 +34,26 @@ func (a *atomicInt2) get() int {
 
 func main() {
 	var a atomicInt2
-	a.increment2()
-	go func() {
+
+	for i := 0; i < 100; i++ {
+		go func() {
+			a.increment2()
+		}()
+	}
+
+	for i := 0; i < 100000; i++ {
 		a.increment2()
+	}
+
+	go func() {
+		for i := 0; i < 100; i++ {
+			a.increment2()
+		}
 	}()
+
+	for i := 0; i < 100000; i++ {
+		a.increment2()
+	}
 
 	time.Sleep(time.Millisecond)
 	fmt.Println(a.get())
