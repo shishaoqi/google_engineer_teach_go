@@ -30,8 +30,10 @@ func main() {
 	fmt.Println(courseName, ok)
 	if causeName, ok = m["cause"]; ok {
 		fmt.Println(causeName)
+		fmt.Println("ok: ", ok)
 	} else {
 		fmt.Println("cause key does not exist")
+		fmt.Println("ok: ", ok)
 	}
 
 	fmt.Println("------- Deleting values -------")
