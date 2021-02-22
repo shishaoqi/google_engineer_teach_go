@@ -10,10 +10,22 @@ import (
 func writeFile_2(filename string) {
 	//file, err := os.Create(filename)
 	file, err := os.OpenFile(filename, os.O_EXCL|os.O_CREATE, 0666)
+	//err = errors.New("this is a custom error") // 创造出一个非 os.PathError
+
 	if err != nil {
 		//panic(err)
 		//fmt.Println("file already exists")
-		fmt.Println("Error:", err) // err.Error()
+		//fmt.Println("Error:", err) // err.Error()
+
+		if pathError, ok := err.(*os.PathError); !ok {
+			panic(err)
+		} else {
+			fmt.Printf("%s -- %s -- %s\n",
+				pathError.Op,
+				pathError.Path,
+				pathError.Err)
+		}
+		return
 	}
 	defer file.Close()
 

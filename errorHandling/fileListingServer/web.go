@@ -14,7 +14,11 @@ func main() {
 			path := request.URL.Path[len("/list/"):] //  /list/google_learngo/
 			file, err := os.Open(path)
 			if err != nil {
-				panic(err)
+				//panic(err)
+				http.Error(writer,
+					err.Error(),
+					http.StatusInternalServerError)
+				return
 			}
 			defer file.Close()
 

@@ -1,7 +1,5 @@
 package mock
 
-import "fmt"
-
 type Retriever struct {
 	Contents string
 }
@@ -27,6 +25,6 @@ func (r *Retriever) Post(url string, from map[string]string) string {
 	return "ok"
 }
 
-func (r *Retriever) String() string {
+/*func (r *Retriever) String() string {
 	return fmt.Sprintf("toString prinf Retriever: {Contents=%s}", r.Contents)
-}
+}*/

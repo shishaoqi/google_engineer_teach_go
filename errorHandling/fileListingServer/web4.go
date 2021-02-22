@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/shishao/hello/errorHandling/fileListingServer/filelisting"
 	"net/http"
-	"./filelisting"
 	"os"
 	"log"
 )

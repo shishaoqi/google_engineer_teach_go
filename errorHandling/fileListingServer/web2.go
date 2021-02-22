@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/shishao/hello/errorHandling/fileListingServer/filelisting"
 	"net/http"
-	"./filelisting"
 	"os"
 	"log"
 )
@@ -33,7 +33,7 @@ const path2 = "/list/"
 func main() {
 	http.HandleFunc(path2, errWrapper(filelisting.HandleFileList))
 
-	err := http.ListenAndServe(":8081", nil)
+	err := http.ListenAndServe(":8082", nil)
 	if err != nil {
 		panic(err)
 	}
