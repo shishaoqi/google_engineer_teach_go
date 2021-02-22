@@ -35,7 +35,7 @@ func (a *atomicInt2) get() int {
 func main() {
 	var a atomicInt2
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 1000; i++ {
 		go func() {
 			a.increment2()
 		}()
@@ -46,7 +46,7 @@ func main() {
 	}
 
 	go func() {
-		for i := 0; i < 100; i++ {
+		for i := 0; i < 1000; i++ {
 			a.increment2()
 		}
 	}()

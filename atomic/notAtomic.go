@@ -19,7 +19,7 @@ func (a *notAtomicInt) get() int {
 func main() {
 	var a notAtomicInt
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 1000; i++ {
 		go func() {
 			a.increment()
 		}()
@@ -30,7 +30,7 @@ func main() {
 	}
 
 	go func() {
-		for i := 0; i < 100; i++ {
+		for i := 0; i < 1000; i++ {
 			a.increment()
 		}
 	}()
