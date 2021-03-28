@@ -115,5 +115,6 @@ func main() {
 	float, _ := strconv.ParseFloat("800.101", 32)
 	fmt.Printf("parseFloat:%f, %s \n", float, reflect.TypeOf(float))
 
+	//strings.IndexFunc()
 
 }

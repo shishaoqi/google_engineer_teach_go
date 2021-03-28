@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func printSlice(s []int) {
 	fmt.Printf("len=%d, cap=%d\n", len(s), cap(s))
@@ -17,7 +20,7 @@ func main() {
 		printSlice(s)
 		s = append(s, 2 * i + 1)
 	}
-	fmt.Println(s)
+	fmt.Println(s, reflect.TypeOf(s))
 
 	s1 := []int{2, 4, 6, 8}
 	printSliceValue(s1)
