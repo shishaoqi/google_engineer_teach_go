@@ -2,11 +2,10 @@ package main
 
 import (
 	"crypto/md5"
+	"code.google.com/p/go.net/websocket"
 	"fmt"
-	"golang.org/x/net/websocket"
 	"io"
 	"log"
-	"math/rand"
 	"strconv"
 	"time"
 )
@@ -16,14 +15,15 @@ const (
 	TOKEN_SALT2 = "g9C1Hr6O1WfR"
 )
 
-var origin = "http://59.57.13.156:9088/"
+var host = "test-cn-1-data.airdroid.com"
+var origin = "http://"+host+":9088/"
 //var url = "ws://59.57.13.156:8088/phone?heartbeat=1&instance_id=1001&id=1001&token=3182d1050c65c7eeaa943c2ce893d843"
 
 func main() {
-	for i := 1; i < 20000; i++ {
-		time.Sleep(300 * time.Millisecond)
+	for i := 1; i <= 5; i++ {
 		idStr := strconv.Itoa(i)
 		tokenStr := GenerateToken(idStr)
+		time.Sleep(10000 * time.Microsecond)
 		go createClient(idStr, tokenStr)
 	}
 
@@ -31,26 +31,17 @@ func main() {
 }
 
 func createClient(id string, token string) {
-	n := rand.Intn(50)
-	time.Sleep(time.Duration(n) * 1000 * time.Microsecond)
-	defer func() {
-		if r := recover(); r != nil {
-			log.Println("==== recover ====", r)
-		}
-	}()
-
-	url := "ws://59.57.13.156:8088/phone?heartbeat=1&instance_id=%s&id=%s&token=%s"
+	url := "ws://"+host+":8088/web?heartbeat=1&instance_id=%s&id=%s&token=%s"
 	url = fmt.Sprintf(url, id, id, token)
-	log.Println(url)
-
 	ws, err := websocket.Dial(url, "", origin)
 	if err != nil {
-		log.Println(err)
+		log.Fatal("connect fail: ", err)
 	}
-	message := []byte("hello, world!你好")
+	message := []byte("client--("+id+") say hello, world!")
 	_, err = ws.Write(message)
 	if err != nil {
-		log.Println(err)
+		log.Println("ws Write error: ", err)
+		return
 	}
 	fmt.Printf("Send: %s\n", message)
 
@@ -58,7 +49,9 @@ func createClient(id string, token string) {
 	for {
 		m, err := ws.Read(msg)
 		if err != nil {
-			log.Println(err)
+			log.Println("ws Read error: ", err)
+			ws.Close()
+			return
 		}
 		fmt.Printf("Receive: %s\n", msg[:m])
 	}
