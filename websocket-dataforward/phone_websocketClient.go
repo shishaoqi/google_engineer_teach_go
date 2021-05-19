@@ -41,7 +41,7 @@ func createClient(id string, token string) {
 	n := rand.Intn(50)
 	time.Sleep(time.Duration(n) * 1000 * time.Microsecond)
 
-	url := "ws://"+host+":8088/phone?heartbeat=1&instance_id=%s&id=%s&token=%s"
+	url := "ws://"+host+":8088/phone?heartbeat=1&instance_id=%s&id=%s&token=%s&device_type=21"
 	url = fmt.Sprintf(url, id, id, token)
 	log.Println("===== request url =====:", id, url)
 
@@ -58,16 +58,49 @@ func createClient(id string, token string) {
 	}
 	fmt.Printf("Success! Send: %s\n", message)
 
-	var msg = make([]byte, 512)
-	for {
-		m, err := ws.Read(msg)
-		if err != nil {
-			log.Println("ws read error: ", err)
-			ws.Close()
-			return
+	go func(){
+		var msg = make([]byte, 512)
+		for {
+			m, err := ws.Read(msg)
+			if err != nil {
+				log.Println("ws read error: ", err)
+				ws.Close()
+				return
+			}
+			fmt.Printf("Receive: %s\n", msg[:m])
 		}
-		fmt.Printf("Receive: %s\n", msg[:m])
-	}
+	}()
+
+	t1 := time.NewTimer(40 * time.Second)
+	//defer t1.Stop()
+	deviceInfoTimer := time.NewTimer(90 * time.Second)
+	//defer deviceInfoTimer.Stop()
+	go func(t *time.Timer, id string, ws *websocket.Conn){
+
+		for {
+			select {
+				case <- t.C:
+					fmt.Print("h heartbeat -- " + time.Now().Format("2006-01-02 15:04:05") + " -- ")
+					message := []byte("h")
+					_, err = ws.Write(message)
+					if err != nil {
+						log.Println("ws write error: ", err)
+						return
+					}
+					t.Reset(40 * time.Second)
+
+				case <-deviceInfoTimer.C:
+					fmt.Print("h+ heartbeatDeviceInfo -- " + time.Now().Format("2006-01-02 15:04:05") + " -- ")
+					msg := []byte("h;;;1;;;1;;;{\"account_id\": 20132, \"device_id\": \"xx\", \"wifi\": 1 ,\"gsm\":2 ,\"battery\":95 ,\"port\":5457,\"ip\":\"127.0.0.1\"")
+					_, err = ws.Write(msg)
+					if err != nil {
+						log.Println("ws write error: ", err)
+						return
+					}
+					deviceInfoTimer.Reset(90 * time.Second)
+			}
+		}
+	}(t1, id, ws)
 
 	//ws.Close()//关闭连接
 }
