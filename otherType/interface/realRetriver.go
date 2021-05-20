@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/shishao/hello/interface/real"
+	"github.com/shishao/hello/otherType/interface/real"
 	"time"
 )
 

@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/shishao/hello/interface/mock"
+	"github.com/shishao/hello/otherType/interface/mock"
 )
 
 type Retriever_1 interface {

@@ -1,9 +1,9 @@
 package real
 
 import (
-	"time"
 	"net/http"
 	"net/http/httputil"
+	"time"
 )
 
 type Retriever struct {

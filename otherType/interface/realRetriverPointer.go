@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/shishao/hello/interface/mock"
-	"github.com/shishao/hello/interface/real_pointer"
+	"github.com/shishao/hello/otherType/interface/mock"
+	"github.com/shishao/hello/otherType/interface/real_pointer"
 	"time"
 )
 
