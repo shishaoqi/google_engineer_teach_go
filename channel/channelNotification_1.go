@@ -8,7 +8,10 @@ import (
 	"os"
 	"sort"
 )
-
+// 如果没有要从channel接收的值,则该channel上的下一个"接收操作"将阻塞,直到另一个goroutine将值发送到该channel.
+// 因此,我们可以将值发送到channel,以通知另一个正在等待从同一channel接收值的 goroutine.
+//
+// 在以下示例中,该channel done 用作执行通知的signal channel.
 func main() {
 	values := make([]byte, 32 * 1024 * 1024)
 	if _, err := rand.Read(values); err != nil {
@@ -16,7 +19,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	done := make(chan struct{}) // 可以是缓存channel 也可以不是
+	done := make(chan struct{}, 10) // 可以是缓存channel 也可以不是
 
 	// goroutine 排序
 	go func() {
