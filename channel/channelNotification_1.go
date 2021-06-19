@@ -8,7 +8,7 @@ import (
 	"os"
 	"sort"
 )
-// 如果没有要从channel接收的值,则该channel上的下一个"接收操作"将阻塞,直到另一个goroutine将值发送到该channel.
+// 如果一个channel没有可接收的值（即为空）,则该channel上的"接收操作"将阻塞,直到另一个goroutine将值发送到该channel.
 // 因此,我们可以将值发送到channel,以通知另一个正在等待从同一channel接收值的 goroutine.
 //
 // 在以下示例中,该channel done 用作执行通知的signal channel.
