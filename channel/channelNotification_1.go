@@ -32,6 +32,6 @@ func main() {
 
 	// do some other things ...
 
-	<- done // waiting here for notification =====
+	<- done // waiting here for notification ===== 接收操作
 	fmt.Println(values[0], values[len(values)-1])
 }
