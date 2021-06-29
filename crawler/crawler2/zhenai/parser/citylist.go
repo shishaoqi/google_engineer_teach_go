@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"../../engine"
+	"github.com/shishao/hello/crawler/crawler2/engine"
 	"regexp"
 )
 

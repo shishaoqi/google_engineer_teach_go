@@ -45,7 +45,7 @@ func determineEncoding(r io.Reader) encoding.Encoding {
 }
 
 func printCityList(contents []byte) {
-	compile := regexp.MustCompile(`<a href="(http://www.zhenai.com/zhenghun/[0-9a-z]+)" data-v-5e16505f>([^<]+)</a>`)
+	compile := regexp.MustCompile(`<a href="(http://www.zhenai.com/zhenghun/[0-9a-z]+)" data-v-1573aa7c>([^<]+)</a>`)
 	submatch := compile.FindAllSubmatch(contents, -1)
 	count := 0
 	for _, m := range submatch {
