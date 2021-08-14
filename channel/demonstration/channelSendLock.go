@@ -10,9 +10,9 @@ func main() {
 
 	counter := 0
 	increase := func() {
-		mutex <- struct{}{} // lock // 注释掉
+		mutex <- struct{}{} // lock // 一起注释掉
 		counter++
-		<-mutex // unlock // 注释掉
+		<-mutex // unlock // 一起注释掉
 	}
 
 	increase1000 := func(done chan<- struct{}) {

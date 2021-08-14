@@ -30,7 +30,7 @@ func main() {
 		<- done
 	}()
 
-	// Blocked here, wait for a notification.
+	// Blocked here, wait for a notification. === send opration is blocked
 	done <- struct{}{}
 	fmt.Println(" world!")
 }

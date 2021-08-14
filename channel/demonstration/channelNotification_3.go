@@ -29,10 +29,15 @@ func main() {
 
 	// Simulate an initailization phase.
 	time.Sleep(time.Second * 3 / 2)
+
 	// 1 to N notification.
-	ready <- T{}; ready <- T{}; ready <- T{}
+	//ready <- T{}; ready <- T{}; ready <- T{}
+	// another way to broadcast notifacations
+	close(ready)
+
 	// Being N-to-1 notified
 	<-done; <-done; <-done
+	log.Print("all jobs done")
 
 	//实际上,在本小节中介绍的进行1-to-N和N-to-1通知的方法在实践中并不常用.
 	//在实践中,我们经常使用 sync.WaitGroup N对1的通知,而我们通过封闭渠道进行1对N的通知.请阅读下一部分以了解详细信息.
