@@ -16,7 +16,7 @@ const (
 	TOKEN_SALT2 = "g9C1Hr6O1WfR"
 )
 
-var host = "test-cn-1-data.airdroid.com"
+var host = "0.0.0.0"
 var origin = "http://"+host+":9088/"
 //var url = "ws://59.57.13.156:8088/phone?heartbeat=1&instance_id=1001&id=1001&token=3182d1050c65c7eeaa943c2ce893d843"
 
