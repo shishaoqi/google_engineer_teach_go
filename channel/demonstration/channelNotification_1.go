@@ -27,7 +27,7 @@ func main() {
 			return values[i] < values[j]
 		})
 		// Notify sorting is done.
-		done <- struct{}{}
+		done <- struct{}{} // ===== 发送操作
 	}()
 
 	// do some other things ...
