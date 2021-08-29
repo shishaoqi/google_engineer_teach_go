@@ -9,9 +9,9 @@ func variableZeroValue() {
 }
 
 func variableInitialValue() {
-	var a, b int = 3, 4 // 声明初始化多个变量
+	var a, b int = 3, 4 // 声明初始化多个变量 -- 这种声明时，变量类型可省略
 	temp := "a string"
-	var s string = "abc"
+	var s = "abc" // 变量类型（string）省略掉，由编译器自行识别
 	fmt.Println(a, b, temp, s)
 }
 

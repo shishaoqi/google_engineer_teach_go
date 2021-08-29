@@ -13,6 +13,7 @@ import (
 // 3. byte, rune(类同于 char)
 // 4. float32, float64, complex64, complex128
 
+// 复数
 func euler() {
 	c := 3 + 4i
 	fmt.Println(cmplx.Abs(c))

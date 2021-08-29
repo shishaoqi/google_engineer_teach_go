@@ -27,7 +27,7 @@ func enums() {
 		pb
 	)
 
-	fmt.Println(cpp, javascript, python, golang)
+	fmt.Println(cpp, python, golang, javascript)
 	fmt.Println(b, kb, mb, gb, tb, pb)
 }
 
