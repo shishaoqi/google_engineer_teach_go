@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/shishao/hello/errorHandling/functional/fib"
+	"shishaoGo/goLanguage/errorHandling/functional/fib"
 	"os"
 )
 

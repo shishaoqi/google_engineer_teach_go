@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"github.com/shishao/hello/crawler/crawler3/engine"
-	"github.com/shishao/hello/crawler/crawler3/model"
+	"shishaoGo/crawler/crawler3/engine"
+	"shishaoGo/crawler/crawler3/model"
 	"regexp"
 		)
 

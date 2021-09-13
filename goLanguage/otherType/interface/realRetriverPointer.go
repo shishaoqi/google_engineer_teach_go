@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/shishao/hello/otherType/interface/mock"
-	"github.com/shishao/hello/otherType/interface/real_pointer"
+	"shishaoGo/goLanguage/otherType/interface/mock"
+	"shishaoGo/goLanguage/otherType/interface/real_pointer"
 	"time"
 )
 

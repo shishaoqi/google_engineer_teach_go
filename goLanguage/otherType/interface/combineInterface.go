@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/shishao/hello/otherType/interface/mock"
-	"github.com/shishao/hello/otherType/interface/post"
+	"shishaoGo/goLanguage/otherType/interface/mock"
+	"shishaoGo/goLanguage/otherType/interface/post"
 )
 
 type Retriever interface {

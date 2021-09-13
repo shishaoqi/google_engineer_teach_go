@@ -1,11 +1,11 @@
 package filelisting
 
 import (
-	"os"
-	"net/http"
-	"io/ioutil"
-	"strings"
 	"fmt"
+	"io/ioutil"
+	"net/http"
+	"os"
+	"strings"
 )
 
 const prefix3 = "/"

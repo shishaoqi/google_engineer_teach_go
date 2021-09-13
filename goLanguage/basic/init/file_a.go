@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/shishao/hello/basic/init/b_package"
-	"github.com/shishao/hello/basic/init/c_package"
+	"shishaoGo/goLanguage/basic/init/b_package"
+	"shishaoGo/goLanguage/basic/init/c_package"
 )
 
 var T int64 = funA()
