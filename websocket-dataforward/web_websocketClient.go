@@ -15,12 +15,15 @@ const (
 	TOKEN_SALT2 = "g9C1Hr6O1WfR"
 )
 
-var host = "test-cn-1-data.airdroid.com"
+var host = "0.0.0.0"
 var origin = "http://"+host+":9088/"
+
+//var host = "test-cn-1-data.airdroid.com"
+//var origin = "http://"+host+":9088/"
 //var url = "ws://59.57.13.156:8088/phone?heartbeat=1&instance_id=1001&id=1001&token=3182d1050c65c7eeaa943c2ce893d843"
 
 func main() {
-	for i := 1; i <= 5; i++ {
+	for i := 1; i <= 500; i++ {
 		idStr := strconv.Itoa(i)
 		tokenStr := GenerateToken(idStr)
 		time.Sleep(10000 * time.Microsecond)
@@ -33,6 +36,7 @@ func main() {
 func createClient(id string, token string) {
 	url := "ws://"+host+":8088/web?heartbeat=1&instance_id=%s&id=%s&token=%s"
 	url = fmt.Sprintf(url, id, id, token)
+	log.Println("===== request url =====:", id, url)
 	ws, err := websocket.Dial(url, "", origin)
 	if err != nil {
 		log.Fatal("connect fail: ", err)

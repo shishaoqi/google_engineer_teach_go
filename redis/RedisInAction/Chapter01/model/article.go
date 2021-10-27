@@ -13,15 +13,15 @@ type Article interface {
 	PostArticle(string, string, string) string
 }
 
-type ArticleRepo struct {
+type ArticleObj struct {
 	Conn *redis.Client
 }
 
-func NewArticleRepo(conn *redis.Client) *ArticleRepo {
-	return &ArticleRepo{Conn: conn}
+func NewArticleRepo(conn *redis.Client) *ArticleObj {
+	return &ArticleObj{Conn: conn}
 }
 
-func (a *ArticleRepo)ArticleVote(user, article string) {
+func (a *ArticleObj)ArticleVote(user, article string) {
 	cutoff := time.Now().Unix() - common.OneWeekInSeconds
 	if a.Conn.ZScore("time:", article).Val() < float64(cutoff) {
 		return
@@ -34,7 +34,7 @@ func (a *ArticleRepo)ArticleVote(user, article string) {
 	}
 }
 
-func (a *ArticleRepo)PostArticle(user, title, link string) string {
+func (a *ArticleObj)PostArticle(user, title, link string) string {
 	articleId := strconv.Itoa(int(a.Conn.Incr("article:").Val()))
 
 	voted := "voted:" + articleId

@@ -1,14 +1,13 @@
 package main
 
 import (
-	"bufio"
+	_ "bufio"
+	"code.google.com/p/go.net/websocket"
 	"crypto/md5"
 	"fmt"
-	"code.google.com/p/go.net/websocket"
 	"io"
 	"log"
 	"math/rand"
-	"os"
 	"strconv"
 	"time"
 )
@@ -23,11 +22,16 @@ var origin = "http://"+host+":9088/"
 //var url = "ws://59.57.13.156:8088/phone?heartbeat=1&instance_id=1001&id=1001&token=3182d1050c65c7eeaa943c2ce893d843"
 
 func main() {
-	for i := 1; i <= 1; i++ {
+	for i := 1; i <= 10000; i++ {
 		time.Sleep(300 * time.Millisecond)
-		idStr := strconv.Itoa(i)
-		tokenStr := GenerateToken(idStr)
-		go createClient(idStr, tokenStr)
+		go func(i int) {
+			end := i + 3
+			for j := i; j < end; j++ {
+				idStr := strconv.Itoa(j)
+				tokenStr := GenerateToken(idStr)
+				go createClient(idStr, tokenStr)
+			}
+		}(i)
 	}
 
 	time.Sleep(36000 * time.Second)
@@ -43,7 +47,7 @@ func createClient(id string, token string) {
 	n := rand.Intn(50)
 	time.Sleep(time.Duration(n) * 1000 * time.Microsecond)
 
-	url := "ws://"+host+":8088/phone?heartbeat=1&instance_id=%s&id=%s&token=%s&device_type=21"
+	url := "ws://"+host+":8088/phone?heartbeat=1&instance_id=%s&id=%s&token=%s&device_type=71"
 	url = fmt.Sprintf(url, id, id, token)
 	log.Println("===== request url =====:", id, url)
 
@@ -78,7 +82,6 @@ func createClient(id string, token string) {
 	hPlus_imer := time.NewTimer(90 * time.Second)
 	//defer deviceInfoTimer.Stop()
 	go func(t *time.Timer, id string, ws *websocket.Conn){
-
 		for {
 			select {
 				case <- t.C:
@@ -104,7 +107,7 @@ func createClient(id string, token string) {
 		}
 	}(h_timer, id, ws)
 
-	f := bufio.NewReader(os.Stdin) //读取输入的内容
+	/*f := bufio.NewReader(os.Stdin) //读取输入的内容
 	for {
 		fmt.Print("请输入一些字符串>")
 		Input,_ := f.ReadString('\n') //定义一行输入的内容分隔符。
@@ -125,9 +128,9 @@ func createClient(id string, token string) {
 			log.Println("ws write error: ", err)
 			return
 		}
-	}
+	}*/
 
-	//ws.Close()//关闭连接
+	//defer ws.Close()//关闭连接
 }
 
 func GenerateToken(device_id string) string {
