@@ -6,14 +6,13 @@ import (
 )
 
 func main() {
-	fmt.Printf("%t\n", 1==2) // 布尔占位符
+	fmt.Printf("%t\n", 1 == 2) // 布尔占位符
 	fmt.Printf("二进制：%b\n", 255)
 	fmt.Printf("八进制：%o\n", 255)
 	fmt.Printf("十进制：%d\n", 255)
 	fmt.Printf("十六进制：%X\n", 255)
 	fmt.Printf("浮点数：%f\n", math.Pi)
 	fmt.Printf("字符串：%s\n", "hello world")
-
 
 	type Human struct {
 		Name string
@@ -38,8 +37,8 @@ func main() {
 	fmt.Printf("十进制表示 %d\n", 0x12)
 	fmt.Printf("十六进制表示，字母形式为小写 a-f %x\n", 13)
 	fmt.Printf("十六进制表示，字母形式为大写 A-F %X\n", 13)
-	fmt.Printf("Unicode格式：U+1234 %U\n", 0x4E2D)
-	fmt.Printf("单引号围绕的字符字面值，由Go语法安全地转义 %q\n", 0x4E2D)
+	fmt.Printf("Unicode格式: U+1234 %U\n", 0x4E2D)
+	fmt.Printf("单引号围绕的字符字面值, 由Go语法安全地转义 %q\n", 0x4E2D)
 
 	// 指针
 	fmt.Printf("十六进制表示，前缀 0x %p", &people)

@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+
 // go 数组是按值传递的
 // 要实现改变的话，必须使用指针
 // func printArray(arr *[5]int) {
@@ -14,9 +15,9 @@ func printArray(arr [5]int) {
 
 func main() {
 	var arr1 [5]int
-	arr2 := [3]int{1, 2, 3} //指定数量
+	arr2 := [3]int{1, 2, 3}          //指定数量
 	arr3 := [...]int{2, 4, 6, 8, 10} //不指定数量
-	var grid [4][5]int //数量写在类型前面
+	var grid [4][5]int               //数量写在类型前面
 
 	fmt.Println(arr1, arr2, arr3)
 	fmt.Println(grid)
@@ -34,5 +35,5 @@ func main() {
 	}*/
 
 	fmt.Println("arr1 and arr3")
-	fmt.Println(arr1, arr3)
+	fmt.Println(arr1, arr3) // 再次输出 aaray，它们的元素都没有被改变
 }

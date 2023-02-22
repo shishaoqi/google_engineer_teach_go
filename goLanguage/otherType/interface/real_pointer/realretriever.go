@@ -1,4 +1,4 @@
-package real
+package real_pointer
 
 import (
 	"net/http"
@@ -8,7 +8,7 @@ import (
 
 type Retriever struct {
 	UserAgent string
-	TimeOut time.Duration
+	TimeOut   time.Duration
 }
 
 func (r *Retriever) Get(url string) string {
@@ -26,5 +26,3 @@ func (r *Retriever) Get(url string) string {
 
 	return string(result)
 }
-
-

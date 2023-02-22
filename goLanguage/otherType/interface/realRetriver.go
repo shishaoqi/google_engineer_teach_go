@@ -6,19 +6,19 @@ import (
 	"time"
 )
 
-type Retriever_2 interface {
+type Retriever_real interface {
 	Get(url string) string
 }
 
-func download_2(r Retriever_2) string {
+func download_2(r Retriever_real) string {
 	return r.Get("http://www.imooc.com")
 }
 
 func main() {
-	var r Retriever_2
+	var r Retriever_real // 接口类型变量
 	r = real.Retriever{
 		UserAgent: "Mozilla/5.0",
-		TimeOut: time.Minute,
+		TimeOut:   time.Minute,
 	}
 	fmt.Printf("%T ---- %v\n", r, r)
 

@@ -15,14 +15,15 @@ type Poster interface {
 }
 
 const url = "http://www.imooc.com"
+
 func download(r Retriever) string {
 	return r.Get(url)
 }
 
-func  postFun(p Poster) string {
+func postFun(p Poster) string {
 	return p.Post(url,
-		map[string]string {
-			"name": "ccmouse",
+		map[string]string{
+			"name":   "ccmouse",
 			"course": "golang",
 		})
 }
@@ -43,14 +44,13 @@ func session(s RetrieverPoster) string {
 	return s.Get(url)
 }
 
-
 func main() {
-	var r Retriever
+	var r Retriever // 接口类型变量
 	r = mock.Retriever{"this is a fake imooc.com"}
 	fmt.Printf("%T ---- %v\n", r, r) // 接口的肚子里有两个东西：类型 与 值
 	fmt.Println(download(r))
 
-	var p Poster
+	var p Poster // 接口类型变量
 	p = post.Post{"http://hello", make(map[string]string)}
 	fmt.Println(postFun(p))
 

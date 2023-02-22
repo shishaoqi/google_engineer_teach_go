@@ -14,7 +14,7 @@ func printFile(filename string) {
 		panic(err)
 	}
 
-	// file 为什么能传给 io.Reader , 因为 *File 实现了 io.Reader 的接口
+	// file 为什么能传给 io.Reader , 因为 *os.File 实现了 io.Reader 的接口
 	printFileContents(file)
 }
 
@@ -26,5 +26,5 @@ func printFileContents(reader io.Reader) {
 }
 
 func main() {
-	printFile("basic/abc.txt")
+	printFile("./abc.txt")
 }
