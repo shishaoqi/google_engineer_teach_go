@@ -1,10 +1,10 @@
 package scheduler
 
-import "../engine"
+import "shishaoGo/crawler/crawler6/engine"
 
 type QueueScheduler struct {
-	requestChan chan 	engine.Request
-	workerChan chan 	chan engine.Request
+	requestChan chan engine.Request
+	workerChan  chan chan engine.Request
 }
 
 func (s *QueueScheduler) WorkerChan() chan engine.Request {
@@ -37,15 +37,14 @@ func (s *QueueScheduler) Run() {
 				activeRequest = requestQ[0]
 			}
 			select {
-				case r := <- s.requestChan:
-					requestQ = append(requestQ, r)
-				case w := <- s.workerChan:
-					workerQ = append(workerQ, w)
-				case activeWorker <- activeRequest:
-					workerQ = workerQ[1:]
-					requestQ = requestQ[1:]
+			case r := <-s.requestChan:
+				requestQ = append(requestQ, r)
+			case w := <-s.workerChan:
+				workerQ = append(workerQ, w)
+			case activeWorker <- activeRequest:
+				workerQ = workerQ[1:]
+				requestQ = requestQ[1:]
 			}
 		}
 	}()
 }
-

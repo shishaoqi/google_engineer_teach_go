@@ -1,12 +1,12 @@
 package parser
 
 import (
-	"../../engine"
-	"../../model"
 	"regexp"
-		)
+	"shishaoGo/crawler/crawler2/engine"
+	"shishaoGo/crawler/crawler2/model"
+)
 
-//const ageRe = `"gender":0,"genderString":"男士",`
+// const ageRe = `"gender":0,"genderString":"男士",`
 var generRe = regexp.MustCompile(`"gender":[01]{1},"genderString":"([^"]+)"`)
 var messagesRe = regexp.MustCompile(`<div[^c]*class="m-btn purple"[^>]*>([^<]+)</div>`)
 
@@ -22,23 +22,23 @@ func PaseProfile(contents []byte, name string) engine.ParseResult {
 	i := 0
 	for _, m := range matches {
 		switch i {
-		case 0 :
+		case 0:
 			profile.Marriage = string(m[1])
-		case 1 :
+		case 1:
 			profile.Age = string(m[1])
-		case 2 :
+		case 2:
 			profile.Xinzuo = string(m[1])
-		case 3 :
+		case 3:
 			profile.Height = string(m[1])
-		case 4 :
+		case 4:
 			profile.Weight = string(m[1])
-		case 5 :
+		case 5:
 
-		case 6 :
+		case 6:
 			profile.Income = string(m[1])
-		case 7 :
+		case 7:
 			profile.Occupation = string(m[1])
-		case 8 :
+		case 8:
 			profile.Education = string(m[1])
 		default:
 

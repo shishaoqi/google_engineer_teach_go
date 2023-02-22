@@ -1,8 +1,8 @@
 package scheduler
 
 import (
-	"../engine"
-	)
+	"shishaoGo/crawler/crawler5/engine"
+)
 
 type SimpleScheduler struct {
 	workerChan chan engine.Request
@@ -32,8 +32,3 @@ func (s *SimpleScheduler) Submit(r engine.Request) {
 		s.workerChan <- r
 	}()
 }
-
-
-
-
-

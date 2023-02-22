@@ -1,8 +1,8 @@
 package main
 
 import (
-	"io/ioutil"
 	"fmt"
+	"io/ioutil"
 )
 
 func grade(score int) string {
@@ -33,12 +33,12 @@ func main() {
 	}
 
 	fmt.Println(
-			grade(0),
-			grade(59),
-			grade(60),
-			grade(82),
-			grade(99),
-			grade(100),
-			grade(100),
-		)
+		grade(0),
+		grade(59),
+		grade(60),
+		grade(82),
+		grade(99),
+		grade(100),
+		grade(100),
+	)
 }

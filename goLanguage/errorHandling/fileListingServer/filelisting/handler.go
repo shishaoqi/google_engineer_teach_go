@@ -9,6 +9,7 @@ import (
 )
 
 const prefix = "/list/"
+
 func HandleFileList(writer http.ResponseWriter, request *http.Request) error {
 	if strings.Index(request.URL.Path, prefix) != 0 {
 		return errors.New("Path must start " + "with" + prefix)
