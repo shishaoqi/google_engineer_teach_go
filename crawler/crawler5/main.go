@@ -1,9 +1,9 @@
 package main
 
 import (
-	"./engine"
-	"./zhenai/parser"
-	"./scheduler"
+	"shishaoGo/crawler/crawler5/engine"
+	"shishaoGo/crawler/crawler5/scheduler"
+	"shishaoGo/crawler/crawler5/zhenai/parser"
 )
 
 func main() {
@@ -13,12 +13,12 @@ func main() {
 	})*/
 
 	e := engine.ConcurrentEngine{
-		Scheduler: &scheduler.QueueScheduler{}, // Scheduler: &scheduler.SimpleScheduler{},
+		Scheduler:   &scheduler.QueueScheduler{}, // Scheduler: &scheduler.SimpleScheduler{},
 		WorkerCount: 100,
 	}
 
 	e.Run(engine.Request{
-		Url: "http://www.zhenai.com/zhenghun",
+		Url:        "http://www.zhenai.com/zhenghun",
 		ParserFunc: parser.ParseCityList,
 	})
 }
