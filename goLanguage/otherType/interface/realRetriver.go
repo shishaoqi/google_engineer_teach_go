@@ -25,6 +25,7 @@ func main() {
 		UserAgent: "Mozilla/5.0",
 		TimeOut:   time.Minute,
 	}
+	// An interface value consists of a concrete value and a dynamic type: [Value, Type]
 	fmt.Printf("%T ---- %v\n", r, r) // 接口的肚子里有两个东西：类型 与 值
 
 	// ---------- 指针类型 ------------
